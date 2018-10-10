@@ -1,8 +1,10 @@
 {
   "name": "@gillchristian/safe-redux",
   "version": "1.0.1",
-  "description": "Create and handle actions with type safety",
-  "main": "./dist/index.js",
+  "description": "Create and handle safely typed actions",
+  "main": "./dist/cmjs/index.js",
+  "module": "./dist/umd/index.js",
+  "es2015": "./dist/es2015/index.js",
   "typings": "./index.d.ts",
   "sideEffects": false,
   "repository": {
@@ -12,7 +14,10 @@
   "author": "Christian Gill <gillchristiang@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --outDir dist/",
+    "build": "yarn build:es2015 && yarn build:umd && yarn build:cmjs",
+    "build:es2015": "tsc --module es2015 --outDir dist/es2015",
+    "build:umd": "tsc --module umd --outDir dist/umd",
+    "build:cmjs": "tsc --module commonjs --outDir dist/cmjs",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "verify": "npm run validate-js && npm run style && npm run test:ci",
