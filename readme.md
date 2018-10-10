@@ -1,5 +1,8 @@
 # safe-redux :evergreen_tree:
 
+[![npm version](https://badge.fury.io/js/%40gillchristian%2Fsafe-redux.svg)](https://badge.fury.io/js/%40gillchristian%2Fsafe-redux)
+[![CircleCI](https://circleci.com/gh/gillchristian/safe-redux.svg?style=svg)](https://circleci.com/gh/gillchristian/safe-redux)
+
 **NOTE**: this library is based on [@martin_hotell](https://github.com/Hotell)'s
 [rex-tils](https://github.com/Hotell/rex-tils) library and his article
 [_Improved Redux type safety with TypeScript 2.8_](https://medium.com/@martin_hotell/improved-redux-type-safety-with-typescript-2-8-2c11a8062575).
