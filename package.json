@@ -1,6 +1,6 @@
 {
   "name": "@gillchristian/safe-redux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create and handle actions with type safety",
   "main": "./dist/index.js",
   "typings": "./index.d.ts",
