@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./",
+    "rootDir": "src",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noErrorTruncation": true,
+    "noUnusedLocals": false
+  },
+  "include": ["src/*.ts", "!src/*.spec.ts"],
+  "exclude": ["node_modules", "dist", "index.d.ts", "src/index.spec.ts"]
+}

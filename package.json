@@ -1,0 +1,35 @@
+{
+  "name": "@gillchristian/safe-redux",
+  "version": "1.0.0",
+  "description": "Create and handle actions with type safety",
+  "main": "./dist/index.js",
+  "typings": "./index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/gillchristian/safe-redux"
+  },
+  "author": "Christian Gill <gillchristiang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "verify": "npm run validate-js && npm run style && npm run test:ci",
+    "format": "prettier  --write '**/*.{ts,json,md}'",
+    "format:changed": "pretty-quick",
+    "precommit": "pretty-quick --staged",
+    "prerelease": "yarn build",
+    "release": "np"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "husky": "^1.1.1",
+    "jest": "^23.6.0",
+    "np": "^3.0.4",
+    "prettier": "^1.14.3",
+    "pretty-quick": "^1.7.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.1"
+  }
+}
