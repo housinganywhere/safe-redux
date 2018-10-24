@@ -1,6 +1,6 @@
 {
   "name": "@gillchristian/safe-redux",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create and handle safely typed actions",
   "main": "./dist/cmjs/index.js",
   "module": "./dist/cmjs/index.js",
