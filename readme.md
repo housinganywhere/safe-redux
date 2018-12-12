@@ -1,6 +1,6 @@
 # safe-redux :evergreen_tree:
 
-[![npm version](https://badge.fury.io/js/%40gillchristian%2Fsafe-redux.svg)](https://badge.fury.io/js/%40gillchristian%2Fsafe-redux)
+[![npm version](https://badge.fury.io/js/%40housinganywhere%2Fsafe-redux.svg)](https://badge.fury.io/js/%40housinganywhere%2Fsafe-redux)
 [![CircleCI](https://circleci.com/gh/gillchristian/safe-redux.svg?style=svg)](https://circleci.com/gh/gillchristian/safe-redux)
 
 **NOTE**: this library is based on [@martin_hotell](https://github.com/Hotell)'s
@@ -15,9 +15,9 @@
 ## Install
 
 ```
-yarn add @gillchristian/safe-redux
+yarn add @housinganywhere/safe-redux
 
-npm i @gillchristian/safe-redux
+npm i @housinganywhere/safe-redux
 ```
 
 ## Use
@@ -27,7 +27,7 @@ Define the actions:
 ```ts
 // src/pages/MyPage/actions.ts
 
-import { ActionsUnion, createAction } from '@gillchristian/safe-redux';
+import { ActionsUnion, createAction } from '@housinganywhere/safe-redux';
 
 export const INC = '[counter] increment';
 export const DEC = '[counter] decrement';
@@ -55,7 +55,7 @@ Handle the actions:
 ```ts
 // src/pages/MyPage/reducer.ts
 
-import { handleActions } from '@gillchristian/safe-redux';
+import { handleActions } from '@housinganywhere/safe-redux';
 
 import { User } from '../types';
 
