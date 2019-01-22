@@ -1,7 +1,7 @@
 # safe-redux :evergreen_tree:
 
 [![npm version](https://badge.fury.io/js/%40housinganywhere%2Fsafe-redux.svg)](https://badge.fury.io/js/%40housinganywhere%2Fsafe-redux)
-[![CircleCI](https://circleci.com/gh/gillchristian/safe-redux.svg?style=svg)](https://circleci.com/gh/gillchristian/safe-redux)
+[![CircleCI](https://circleci.com/gh/housinganywhere/safe-redux.svg?style=svg)](https://circleci.com/gh/housinganywhere/safe-redux)
 
 **NOTE**: this library is based on [@martin_hotell](https://github.com/Hotell)'s
 [rex-tils](https://github.com/Hotell/rex-tils) library and his article
