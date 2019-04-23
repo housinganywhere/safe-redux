@@ -140,5 +140,4 @@ export default connect<StateProps, DispatchProps>(
 - Added `handleActions` to create type safe reducers.
 - Smaller API. `safe-redux` only exports a few functions and types:
   - Functions: `createAction` and `handleActions`.
-  - Types: `Action`, `ActionsUnion`, `ActionsOfType`, `Payload` and
-    `BindAction`.
+  - Types: `Action`, `ActionsUnion`, `ActionsOfType` and `BindAction`.
