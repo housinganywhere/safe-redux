@@ -6,7 +6,7 @@
   "module": "./dist/cmjs/index.js",
   "es2015": "./dist/es2015/index.js",
   "unpkg": "./dist/umd/index.js",
-  "typings": "./index.d.ts",
+  "typings": "./typings/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "author": "Christian Gill <gillchristiang@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn build:es2015 && yarn build:umd && yarn build:cmjs",
+    "build": "yarn build:umd && yarn build:cmjs && yarn build:es2015 ",
     "build:es2015": "tsc --module es2015 --outDir dist/es2015",
     "build:umd": "tsc --module umd --outDir dist/umd",
     "build:cmjs": "tsc --module commonjs --outDir dist/cmjs",
