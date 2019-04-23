@@ -82,6 +82,55 @@ const reducer = handleActions<State, ActionTypes, Actions>(
 export default reducer;
 ```
 
+### Type utils
+
+`safe-redux` also provides some type utils to work with Redux.
+
+#### `BindAction`
+
+Changes the return type of an action creator to `void`. In the context of a
+component the only important part of an action is the types of it's arguments.
+We don't rely on the return type.
+
+```typescript
+// src/pages/MyPage/actions.ts
+
+import { ActionsUnion, createAction } from '@housinganywhere/safe-redux';
+
+export const INC = '[counter] increment';
+export const DEC = '[counter] decrement';
+export const INC_BY = '[counter] increment_BY';
+
+export const Actions = {
+  incBy: (by: number) => createAction(INC_BY, { by }),
+};
+
+export type Actions = ActionsUnion<typeof Actions>;
+
+// src/pages/MyPage/MyPage.container.ts
+
+import { connect } from 'react-redux';
+import { BindAction } from '@housinganywhere/safe-redux';
+
+import { Actions } from './actions';
+import MyPage from './MyPage';
+
+interface StateProps {
+  count: number;
+}
+
+interface DispatchProps {
+  incBy: BindAction<typeof Actions.incBy>; // (arg: number) => void
+}
+
+type MyPageProps = StateProps & DispatchProps;
+
+export default connect<StateProps, DispatchProps>(
+  (s) => ({ count: s.count }),
+  { incBy: Actions.incBy },
+)(MyPage);
+```
+
 ## Differences with `rex-tils`
 
 - Actions created by `createAction` are compliant with
@@ -91,4 +140,5 @@ export default reducer;
 - Added `handleActions` to create type safe reducers.
 - Smaller API. `safe-redux` only exports a few functions and types:
   - Functions: `createAction` and `handleActions`.
-  - Types: `Action`, `ActionsUnion` and `ActionsOfType`.
+  - Types: `Action`, `ActionsUnion`, `ActionsOfType`, `Payload` and
+    `BindAction`.

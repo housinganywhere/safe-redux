@@ -1,8 +1,5 @@
-// tslint:disable-next-line no-any
-type AnyFunction = (...args: any[]) => any;
-interface StringMap<T> {
-  [key: string]: T;
-}
+export { BindAction } from './utils';
+import { AnyFunction, StringMap } from './utils';
 
 // We use conditional types so we can have only one type for defining Action
 export type Action<
@@ -14,8 +11,8 @@ export type Action<
     ? Readonly<{ type: T; error: boolean }>
     : Readonly<{ type: T; meta: M; error: boolean }>
   : M extends void
-    ? Readonly<{ type: T; payload: P; error: boolean }>
-    : Readonly<{ type: T; payload: P; meta: M; error: boolean }>;
+  ? Readonly<{ type: T; payload: P; error: boolean }>
+  : Readonly<{ type: T; payload: P; meta: M; error: boolean }>;
 
 export type ActionsUnion<A extends StringMap<AnyFunction>> = ReturnType<
   A[keyof A]
@@ -47,8 +44,8 @@ export function createAction<T extends string, P, M>(
       ? { type, error: false }
       : { type, meta, error: false }
     : meta === undefined
-      ? { type, payload, error: payload instanceof Error }
-      : { type, payload, meta, error: payload instanceof Error };
+    ? { type, payload, error: payload instanceof Error }
+    : { type, payload, meta, error: payload instanceof Error };
 }
 
 export function handleActions<
