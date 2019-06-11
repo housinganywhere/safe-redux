@@ -54,7 +54,7 @@ export function handleActions<
   Actions extends ActionsUnion<{ [T in Types]: AnyFunction }>
 >(
   handler: {
-    [T in Types]: (state: State, action: ActionsOfType<Actions, T>) => State
+    [T in Types]: (state: State, action: ActionsOfType<Actions, T>) => State;
   },
   initialState: State,
 ) {
