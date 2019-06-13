@@ -55,7 +55,7 @@ Handle the actions:
 ```ts
 // src/pages/MyPage/reducer.ts
 
-import { handleActions } from '@housinganywhere/safe-redux';
+import { handleActions, Handler } from '@housinganywhere/safe-redux';
 
 import { User } from '../types';
 
@@ -69,11 +69,17 @@ const initialState: State = {
   count: 0,
 };
 
+// `Handler` type can be used when you don't want to define the handlers inline
+const handleIncBy: Handler<State, typeof INC_BY, Actions> = (
+  { count },
+  { payload },
+) => ({ count: count + payload });
+
 const reducer = handleActions<State, ActionTypes, Actions>(
   {
     [INC]: ({ count }) => ({ count: count + 1 }),
     [DEC]: ({ count }) => ({ count: count - 1 }),
-    [INC_BY]: ({ count }, { payload }) => ({ count: count + payload }),
+    [INC_BY]: handleIncBy,
     [WITH_META]: ({ count }, { payload }) => ({ count: count + payload }),
   },
   initialState,
@@ -140,4 +146,5 @@ export default connect<StateProps, DispatchProps>(
 - Added `handleActions` to create type safe reducers.
 - Smaller API. `safe-redux` only exports a few functions and types:
   - Functions: `createAction` and `handleActions`.
-  - Types: `Action`, `ActionsUnion`, `ActionsOfType` and `BindAction`.
+  - Types: `Action`, `ActionsUnion`, `ActionsOfType`, `Handler` and
+    `BindAction`.

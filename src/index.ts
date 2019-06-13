@@ -1,5 +1,5 @@
 export { BindAction } from './utils';
-import { AnyFunction, StringMap } from './utils';
+import { ReturnType } from './utils';
 
 // We use conditional types so we can have only one type for defining Action
 export type Action<
@@ -14,15 +14,21 @@ export type Action<
   ? Readonly<{ type: T; payload: P; error: boolean }>
   : Readonly<{ type: T; payload: P; meta: M; error: boolean }>;
 
-export type ActionsUnion<A extends StringMap<AnyFunction>> = ReturnType<
-  A[keyof A]
->;
+type ActionCreator = (...args: any[]) => Action;
+type ActionCreators = { [k: string]: ActionCreator };
+
+export type ActionsUnion<A extends ActionCreators> = ReturnType<A[keyof A]>;
 
 // conditional type for filtering actions in epics/effects
 export type ActionsOfType<
   ActionUnion,
   ActionType extends string
 > = ActionUnion extends Action<ActionType> ? ActionUnion : never;
+
+export type Handler<State, ActionType extends string, Actions> = (
+  state: State,
+  action: ActionsOfType<Actions, ActionType>,
+) => State;
 
 export function createAction<T extends string>(type: T): Action<T>;
 export function createAction<T extends string, P>(
@@ -51,13 +57,11 @@ export function createAction<T extends string, P, M>(
 export function handleActions<
   State,
   Types extends string,
-  Actions extends ActionsUnion<{ [T in Types]: AnyFunction }>
->(
-  handler: {
-    [T in Types]: (state: State, action: ActionsOfType<Actions, T>) => State;
-  },
-  initialState: State,
-) {
-  return (state = initialState, action: Actions): State =>
-    handler[action.type] ? handler[action.type](state, action) : state;
+  Actions extends ActionsUnion<{ [T in Types]: ActionCreator }>
+>(handlers: { [T in Types]: Handler<State, T, Actions> }, initialState: State) {
+  return (state = initialState, action: Actions): State => {
+    const handler = handlers[action.type];
+
+    return handler ? handler(state, action) : state;
+  };
 }

@@ -85,14 +85,15 @@ type ChangeReturnType<F, R> = F extends () => any
     ) => R
   : never;
 
-export type AnyFunction = (...args: any[]) => any;
+// TS `ReturnType` defaults to `any` instead of `never`
+export type ReturnType<T extends (...args: any[]) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : never;
 
 // tslint:enable no-any
 
 // use case example:
 // @link http://bit.ly/2KSnhEK
 export type BindAction<A> = ChangeReturnType<A, void>;
-
-export interface StringMap<T> {
-  [key: string]: T;
-}
