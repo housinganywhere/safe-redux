@@ -1,6 +1,6 @@
 {
   "name": "@housinganywhere/safe-redux",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Create and handle safely typed actions",
   "main": "./dist/cmjs/index.js",
   "module": "./dist/cmjs/index.js",
